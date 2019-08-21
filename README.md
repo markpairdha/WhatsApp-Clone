@@ -2,7 +2,7 @@
  Android Chat Application that I developed using Android Studios & Firebase.Supports 1-1 chat,Group chats including sharing of Media(docs,images & contacts) & deleting a message too!
 
 #### [Jump to Classes](https://github.com/markpairdha/WhatsApp-Clone/tree/master/WhatsApp/app/src/main/java/com/github/markpairdha/whatsapp)
-#### [Jump to resource files](https://github.com/markpairdha/WhatsApp-Clone/tree/master/WhatsApp/app/src/main/res)
+#### [Jump to resource files](https://github.com/markpairdha/WhatsApp-Clone/tree/master/WhatsApp/app/src/main/res/layout)
 #### [Jump to Manifest files](https://github.com/markpairdha/WhatsApp-Clone/blob/master/WhatsApp/app/src/main/AndroidManifest.xml)
 #### [Jump to Firebase Notifications.js](https://github.com/markpairdha/WhatsApp-Clone/blob/master/Notification/functions/index.js)
 
