@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+   <de.hdodenhof.circleimageview.CircleImageView
+       android:id="@+id/message_profile_image"
+       android:layout_width="40dp"
+       android:layout_height="40dp"
+       android:layout_marginTop="10dp"
+       android:src="@drawable/profile_image"
+       />
+
+    <TextView
+        android:id="@+id/receiver_message_text"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_alignParentTop = "true"
+        android:layout_marginTop = "10dp"
+        android:layout_marginLeft = "3dp"
+        android:layout_toEndOf = "@+id/message_profile_image"
+        android:background = "@drawable/receiver_messages_layout"
+        android:text = "receiver messages here"
+        android:padding = "10dp"
+        android:textSize = "14sp"
+        android:textStyle = "bold"
+        android:textColor = "@android:color/black"
+        />
+
+    <ImageView
+        android:id = "@+id/message_sender_image_view"
+        android:layout_width = "150dp"
+        android:layout_height = "150dp"
+        android:layout_alignParentEnd = "true"
+        android:layout_margin = "5dp"
+        android:scaleType = "centerCrop"
+        />
+
+    <ImageView
+        android:id = "@+id/message_receiver_image_view"
+        android:layout_width = "150dp"
+        android:layout_height = "150dp"
+        android:layout_alignParentStart = "true"
+        android:layout_marginStart = "50dp"
+        android:layout_marginTop = "13dp"
+        android:scaleType = "centerCrop"
+        />
+
+    <TextView
+        android:id = "@+id/sender_message_text"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_alignParentEnd = "true"
+        android:layout_marginTop = "10dp"
+        android:layout_alignParentTop="@+id/receiver_message_text"
+        android:background="@drawable/sender_messages_layout"
+        android:text="sender messages"
+        android:textSize="14sp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        />
+</RelativeLayout>

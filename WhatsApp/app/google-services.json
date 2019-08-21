@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "186912119494",
+    "firebase_url": "https://whatsapp-ca64d.firebaseio.com",
+    "project_id": "whatsapp-ca64d",
+    "storage_bucket": "whatsapp-ca64d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186912119494:android:3d783b57b95d11bc",
+        "android_client_info": {
+          "package_name": "com.github.markpairdha.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186912119494-9v8esb2r5vld0g87ufuqd40fnjvkqekp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.markpairdha.whatsapp",
+            "certificate_hash": "b4a864a7b8c815982f7533c7035b7a6b0100455b"
+          }
+        },
+        {
+          "client_id": "186912119494-9pgj9gmtscqft1918cuekjor3nss9udr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.markpairdha.whatsapp",
+            "certificate_hash": "fe8fb661bde79f77cb86d12dd806a3723c3f68c1"
+          }
+        },
+        {
+          "client_id": "186912119494-j0q1jn40v92kfllusgb5br29gcg9eqp9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGByGlOzfTaLWUyJEydN3IJafWgsoUSHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186912119494-j0q1jn40v92kfllusgb5br29gcg9eqp9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
