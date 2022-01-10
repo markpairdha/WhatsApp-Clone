@@ -56,9 +56,9 @@ public class ContactsFragment extends Fragment
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
 
-
-        ContacsRef = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserID);
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        // TODO: Add your own Firebase Database Instance here
+        ContacsRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Contacts").child(currentUserID);
+        UsersRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Users");
 
 
         return ContactsView;

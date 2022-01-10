@@ -36,10 +36,11 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         mAuth = FirebaseAuth.getInstance();
-        UserRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        ChatRequestRef = FirebaseDatabase.getInstance().getReference().child("Chat Requests");
-        ContactsRef = FirebaseDatabase.getInstance().getReference().child("Contacts");
-        NotificationRef = FirebaseDatabase.getInstance().getReference().child("Notifications");
+		// TODO: Add your own Firebase Database instance here
+        UserRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Users");
+        ChatRequestRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Chat Requests");
+        ContactsRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Contacts");
+        NotificationRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Notifications");
 
         // from FindFriendsActivity.java
         receiverUserID = getIntent().getExtras().get("visit_user_id").toString();
