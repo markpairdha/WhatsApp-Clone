@@ -33,7 +33,8 @@ public class FindFriendsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_friends);
 
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+		// TODO: Add your own Firebase Database instance here
+        UsersRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Users");
 
         FindFriendsRecyclerList = (RecyclerView) findViewById(R.id.find_friends_toolbar);
         FindFriendsRecyclerList.setLayoutManager(new LinearLayoutManager(this));
@@ -55,9 +56,9 @@ public class FindFriendsActivity extends AppCompatActivity {
                         .setQuery(UsersRef, Contacts.class)
                         .build();
         FirebaseRecyclerAdapter<Contacts, FindFriendViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Contacts, FindFriendViewHolder>() {
+                new FirebaseRecyclerAdapter<Contacts, FindFriendViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull FindFriendViewHolder holder, final int position, @NonNull Contacts model) {
+                    protected void onBindViewHolder(@NonNull final FindFriendViewHolder holder, int position, @NonNull Contacts model) {
 
                         holder.userName.setText(model.getName());
                         holder.userStatus.setText(model.getStatus());
@@ -67,7 +68,7 @@ public class FindFriendsActivity extends AppCompatActivity {
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                String visit_user_id = getRef(position).getKey();
+                                String visit_user_id = getRef(holder.getBindingAdapterPosition()).getKey();
 
                                 Intent profileIntent = new Intent(FindFriendsActivity.this, ProfileActivity.class);
                                 profileIntent.putExtra("visit_user_id", visit_user_id);

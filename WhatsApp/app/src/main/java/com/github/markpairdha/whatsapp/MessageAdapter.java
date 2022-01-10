@@ -49,7 +49,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            senderMessageText = (TextView) itemView.findViewById(R.id.sender_messsage_text);
+            senderMessageText = (TextView) itemView.findViewById(R.id.sender_message_text);
             receiverMessageText = (TextView) itemView.findViewById(R.id.receiver_message_text);
             receiverProfileImage = (CircleImageView) itemView.findViewById(R.id.message_profile_image);
             messageReceiverPicture = itemView.findViewById(R.id.message_receiver_image_view);
@@ -71,14 +71,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
 
     @Override
-    public void onBindViewHolder(@NonNull final MessageViewHolder messageViewHolder, final int position) {
+    public void onBindViewHolder(@NonNull final MessageViewHolder messageViewHolder, int position) {
         String messageSenderId = mAuth.getCurrentUser().getUid();
-        Messages messages = userMessagesList.get(i);
+        Messages messages = userMessagesList.get(messageViewHolder.getBindingAdapterPosition());
 
         String fromUserID = messages.getFrom();
         String fromMessageType = messages.getType();
 
-        usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(fromUserID);
+		// TODO: Add your own Firebase Database instance here
+        usersRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Users").child(fromUserID);
 
         usersRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -132,26 +133,26 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         } else if (fromMessageType.equals("pdf") || fromMessageType.equals("docx")) {
             if (fromUserID.equals(messageSenderId)) {
                 messageViewHolder.messageSenderPicture.setVisibility(View.VISIBLE);
-                messageViewHolder.messageSenderPicture.setBackground(R.drawable.file);
+                // messageViewHolder.messageSenderPicture.setBackground(R.drawable.file);
 
                 messageViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(userMessagesList.get(position).getMessage()));
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getMessage()));
                         messageViewHolder.itemView.getContext().startActivity(intent);
                     }
                 });
             } else {
                 messageViewHolder.receiverProfileImage.setVisibility(View.VISIBLE);
                 messageViewHolder.messageReceiverPicture.setVisibility(View.VISIBLE);
-                messageViewHolder.messageReceiverPicture.setBackground(R.drawable.file);
+                // messageViewHolder.messageReceiverPicture.setBackground(R.drawable.file);
             }
         }
         if (fromUserID.equals(messageSenderId)) {
             messageViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (userMessagesList.get(position).getType().equals("pdf") || userMessagesList.get(position).getType().equals("docx")) {
+                    if (userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("pdf") || userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("docx")) {
                         CharSequence options[] = new CharSequence[]
                                 {
                                         "Delete For me",
@@ -179,7 +180,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                             }
                         });
                         builder.show();
-                    } else if (userMessagesList.get(position).getType().equals("text")) {
+                    } else if (userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("text")) {
                         CharSequence options[] = new CharSequence[]
                                 {
                                         "Delete For me",
@@ -203,7 +204,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                             }
                         });
                         builder.show();
-                    } else if (userMessagesList.get(position).getType().equals("image")) {
+                    } else if (userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("image")) {
                         CharSequence options[] = new CharSequence[]
                                 {
                                         "Delete For me",
@@ -239,7 +240,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             messageViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (userMessagesList.get(position).getType().equals("pdf") || userMessagesList.get(position).getType().equals("docx")) {
+                    if (userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("pdf") || userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("docx")) {
                         CharSequence options[] = new CharSequence[]
                                 {
                                         "Delete For me",
@@ -264,7 +265,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                             }
                         });
                         builder.show();
-                    } else if (userMessagesList.get(position).getType().equals("text")) {
+                    } else if (userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("text")) {
                         CharSequence options[] = new CharSequence[]
                                 {
                                         "Delete For me",
@@ -284,7 +285,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                             }
                         });
                         builder.show();
-                    } else if (userMessagesList.get(position).getType().equals("image")) {
+                    } else if (userMessagesList.get(messageViewHolder.getBindingAdapterPosition()).getType().equals("image")) {
                         CharSequence options[] = new CharSequence[]
                                 {
                                         "Delete For me",
@@ -325,7 +326,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     private void deleteSentMessage(final int position, final MessageViewHolder holder)
     {
-      DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+	  // TODO: Add your own Firebase Database instance here
+      DatabaseReference rootRef = FirebaseDatabase.getInstance("Add your instance here").getReference();
       rootRef.child("Messages")
               .child(userMessagesList.get(position).getFrom())
               .child(userMessagesList.get(position).getTo())
@@ -349,7 +351,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     private void deleteReceiverMessage(final int position, final MessageViewHolder holder)
     {
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        // TODO: Add your own Firebase Database instance here
+        DatabaseReference rootRef = FirebaseDatabase.getInstance("Add your instance here").getReference();
         rootRef.child("Messages")
                 .child(userMessagesList.get(position).getTo())
                 .child(userMessagesList.get(position).getFrom())
@@ -372,7 +375,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     }
     private void deleteMessageForEveryOne(final int position, final MessageViewHolder holder)
     {
-        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        // TODO: Add your own Firebase Database instance here
+        final DatabaseReference rootRef = FirebaseDatabase.getInstance("Add your instance here").getReference();
         rootRef.child("Messages")
                 .child(userMessagesList.get(position).getFrom())
                 .child(userMessagesList.get(position).getTo())

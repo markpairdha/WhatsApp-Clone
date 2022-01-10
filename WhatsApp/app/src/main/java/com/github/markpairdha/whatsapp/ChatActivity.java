@@ -9,13 +9,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +24,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -87,7 +85,8 @@ public class ChatActivity extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
         messageSenderID = mAuth.getCurrentUser().getUid();
-        RootRef = FirebaseDatabase.getInstance().getReference();
+		// TODO: Add your own Database instance here
+        RootRef = FirebaseDatabase.getInstance("Add your own instance here").getReference();
 
 
         messageReceiverID = getIntent().getExtras().get("visit_user_id").toString();
@@ -95,7 +94,7 @@ public class ChatActivity extends AppCompatActivity
         messageReceiverImage = getIntent().getExtras().get("visit_image").toString();
 
 
-        IntializeControllers();
+        InitializeControllers();
 
 
         userName.setText(messageReceiverName);
@@ -153,7 +152,8 @@ public class ChatActivity extends AppCompatActivity
         });
     }
 
-    private void IntializeControllers() {
+    @SuppressLint("RestrictedApi")
+    private void InitializeControllers() {
         ChatToolBar = (Toolbar) findViewById(R.id.chat_toolbar);
         setSupportActionBar(ChatToolBar);
 

@@ -40,17 +40,18 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
-    private String currentUserID;
+    // private String currentUserID;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-        RootRef = FirebaseDatabase.getInstance().getReference();
+		// TODO: Add your Firebase Database instance here
+        RootRef = FirebaseDatabase.getInstance("Add your instance here").getReference();
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
@@ -226,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateUserStatus(String state)
     {
         String saveCurrentTime, saveCurrentDate;
+        String currentUserID = mAuth.getCurrentUser().getUid();
 
         Calendar calendar = Calendar.getInstance();
 

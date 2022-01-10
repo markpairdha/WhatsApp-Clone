@@ -42,7 +42,8 @@ public class GroupsFragment extends Fragment
 
         groupFragmentView =  inflater.inflate(R.layout.fragment_groups, container, false);
 
-        GroupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
+		// TODO: Add your own Firebase Database instance here
+        GroupRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Groups");
 
         InitializeFields();
 

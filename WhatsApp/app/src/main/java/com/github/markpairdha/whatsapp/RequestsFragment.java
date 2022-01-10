@@ -52,9 +52,10 @@ public class RequestsFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        ChatRequestsRef = FirebaseDatabase.getInstance().getReference().child("Chat Requests");
-        ContactsRef = FirebaseDatabase.getInstance().getReference().child("Contacts");
+		// TODO: Add your own Firebase Database instance here
+        UsersRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Users");
+        ChatRequestsRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Chat Requests");
+        ContactsRef = FirebaseDatabase.getInstance("Add your instance here").getReference().child("Contacts");
 
 
         myRequestsList = (RecyclerView) RequestsFragmentView.findViewById(R.id.chat_requests_list);
